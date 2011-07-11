@@ -1,4 +1,4 @@
-package com.codejavadoc.mojo;
+package com.github.podal.codejavadoc.mojo;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,9 +9,9 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.project.MavenProject;
 
-import com.codejavadoc.CodeJavaDoc;
-import com.codejavadoc.CodeJavaDoc.Log;
-import com.codejavadoc.util.FileUtil.Encoding;
+import com.github.podal.codejavadoc.CodeJavaDoc;
+import com.github.podal.codejavadoc.CodeJavaDoc.Log;
+import com.github.podal.codejavadoc.util.FileUtil.Encoding;
 
 /**
  * @goal codejavadoc

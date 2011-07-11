@@ -1,12 +1,12 @@
-package com.codejavadoc;
+package com.github.podal.codejavadoc;
 
-import static com.codejavadoc.CodeConstants.PATTERN_END;
-import static com.codejavadoc.CodeConstants.PATTERN_START;
-import static com.codejavadoc.CodeConstants.PATTERN_VOID_METHOD;
-import static com.codejavadoc.CodeConstants.PATTERN_WITH_CHECK;
-import static com.codejavadoc.util.FileUtil.file;
-import static com.codejavadoc.util.FileUtil.removeExstention;
-import static com.codejavadoc.util.MapUtil.findFirstKeyToValue;
+import static com.github.podal.codejavadoc.CodeConstants.PATTERN_END;
+import static com.github.podal.codejavadoc.CodeConstants.PATTERN_START;
+import static com.github.podal.codejavadoc.CodeConstants.PATTERN_VOID_METHOD;
+import static com.github.podal.codejavadoc.CodeConstants.PATTERN_WITH_CHECK;
+import static com.github.podal.codejavadoc.util.FileUtil.file;
+import static com.github.podal.codejavadoc.util.FileUtil.removeExstention;
+import static com.github.podal.codejavadoc.util.MapUtil.findFirstKeyToValue;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +18,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
 
-import com.codejavadoc.util.FileUtil.Encoding;
-import com.codejavadoc.util.FileUtil.LineCallback;
+import com.github.podal.codejavadoc.util.FileUtil.Encoding;
+import com.github.podal.codejavadoc.util.FileUtil.LineCallback;
 
 public class ClassInfoFetcher implements LineCallback {
 

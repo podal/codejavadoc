@@ -1,6 +1,6 @@
-package com.codejavadoc.eclipse;
+package com.github.podal.codejavadoc.eclipse;
 
-import com.codejavadoc.ClassInfoFetcher;
+import com.github.podal.codejavadoc.ClassInfoFetcher;
 
 public class CodeJavaDocInfo {
 

@@ -1,6 +1,6 @@
-package com.codejavadoc.util;
+package com.github.podal.codejavadoc.util;
 
-import static com.codejavadoc.util.StringUtil.cutLast;
+import static com.github.podal.codejavadoc.util.StringUtil.cutLast;
 
 import java.io.BufferedReader;
 import java.io.File;

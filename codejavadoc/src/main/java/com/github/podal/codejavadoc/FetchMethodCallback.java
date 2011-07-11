@@ -1,10 +1,10 @@
-package com.codejavadoc;
+package com.github.podal.codejavadoc;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.codejavadoc.util.FileUtil.LineCallback;
+import com.github.podal.codejavadoc.util.FileUtil.LineCallback;
 
 
 public class FetchMethodCallback implements LineCallback {

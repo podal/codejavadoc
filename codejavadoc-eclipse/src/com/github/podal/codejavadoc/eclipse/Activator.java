@@ -1,4 +1,4 @@
-package com.codejavadoc.eclipse;
+package com.github.podal.codejavadoc.eclipse;
 
 import java.util.HashMap;
 import java.util.Map;

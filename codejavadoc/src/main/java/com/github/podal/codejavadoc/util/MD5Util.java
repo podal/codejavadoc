@@ -1,6 +1,6 @@
-package com.codejavadoc.util;
+package com.github.podal.codejavadoc.util;
 
-import static com.codejavadoc.util.StringUtil.padLeft;
+import static com.github.podal.codejavadoc.util.StringUtil.padLeft;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

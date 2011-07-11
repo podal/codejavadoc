@@ -1,4 +1,4 @@
-package com.codejavadoc;
+package com.github.podal.codejavadoc;
 
 import java.util.regex.Pattern;
 

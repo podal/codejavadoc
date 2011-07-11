@@ -3,27 +3,27 @@
 <plugin>
 
    <extension
-         id="Codejavadoc"
+         id="CodejavadocBuilder"
          name="Code to JavaDoc Builder"
          point="org.eclipse.core.resources.builders">
       <builder
             hasNature="true">
          <run
-               class="com.codejavadoc.eclipse.CodejavadocBuilder">
+               class="com.github.podal.codejavadoc.eclipse.CodejavadocBuilder">
          </run>
       </builder>
    </extension>
    <extension
-         id="Codejavadoc"
+         id="CodejavadocNature"
          name="Sample Project Nature"
          point="org.eclipse.core.resources.natures">
       <runtime>
          <run
-               class="com.codejavadoc.eclipse.Codejavadoc">
+               class="com.github.podal.codejavadoc.eclipse.Codejavadoc">
          </run>
       </runtime>
       <builder
-            id="codejavadoc-eclipse.Codejavadoc">
+            id="com.github.podal.codejavadoc.CodejavadocBuilder">
       </builder>
    </extension>
    <extension
@@ -32,13 +32,13 @@
             adaptable="true"
             objectClass="org.eclipse.core.resources.IProject"
             nameFilter="*"
-            id="codejavadoc-eclipse.contribution1">
+            id="com.github.podal.codejavadoc.contribution1">
          <action
                label="Add/Remove Code to JavaDoc"
-               class="com.codejavadoc.eclipse.ToggleNatureAction"
+               class="com.github.podal.codejavadoc.eclipse.ToggleNatureAction"
                menubarPath="additions"
                enablesFor="+"
-               id="codejavadoc-eclipse.addRemoveNatureAction">
+               id="com.github.podal.codejavadoc.addRemoveNatureAction">
          </action>
       </objectContribution>
    </extension>

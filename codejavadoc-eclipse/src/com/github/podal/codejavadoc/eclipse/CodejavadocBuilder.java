@@ -1,6 +1,6 @@
-package com.codejavadoc.eclipse;
+package com.github.podal.codejavadoc.eclipse;
 
-import static com.codejavadoc.eclipse.JavaProjectHelper.isOnClassPath;
+import static com.github.podal.codejavadoc.eclipse.JavaProjectHelper.isOnClassPath;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,16 +22,16 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 
-import com.codejavadoc.ClassInfoFetcher;
-import com.codejavadoc.CodeJavaDoc;
-import com.codejavadoc.CodeJavaDoc.HandleFile;
-import com.codejavadoc.JavaDocSection;
-import com.codejavadoc.util.FileUtil;
-import com.codejavadoc.util.FileUtil.Encoding;
-import com.codejavadoc.util.FileUtil.LineCallback;
+import com.github.podal.codejavadoc.ClassInfoFetcher;
+import com.github.podal.codejavadoc.CodeJavaDoc;
+import com.github.podal.codejavadoc.CodeJavaDoc.HandleFile;
+import com.github.podal.codejavadoc.JavaDocSection;
+import com.github.podal.codejavadoc.util.FileUtil;
+import com.github.podal.codejavadoc.util.FileUtil.Encoding;
+import com.github.podal.codejavadoc.util.FileUtil.LineCallback;
 
 public class CodejavadocBuilder extends IncrementalProjectBuilder {
-	public static final String BUILDER_ID = "codejavadoc-eclipse.Codejavadoc";
+	public static final String BUILDER_ID = "com.github.podal.codejavadoc.CodejavadocBuilder";
 
 	class ResourceVisitor implements IResourceDeltaVisitor, IResourceVisitor {
 		private LineCallback callback;

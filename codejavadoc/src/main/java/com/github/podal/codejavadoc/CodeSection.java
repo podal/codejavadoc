@@ -1,8 +1,8 @@
-package com.codejavadoc;
+package com.github.podal.codejavadoc;
 
 import java.util.List;
 
-import com.codejavadoc.util.MD5Util;
+import com.github.podal.codejavadoc.util.MD5Util;
 
 
 public class CodeSection {

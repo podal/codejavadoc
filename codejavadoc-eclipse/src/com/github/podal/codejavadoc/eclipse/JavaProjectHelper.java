@@ -1,4 +1,4 @@
-package com.codejavadoc.eclipse;
+package com.github.podal.codejavadoc.eclipse;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectNature;

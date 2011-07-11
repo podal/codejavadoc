@@ -1,4 +1,4 @@
-package com.codejavadoc.eclipse;
+package com.github.podal.codejavadoc.eclipse;
 
 import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IProject;
@@ -8,7 +8,7 @@ import org.eclipse.core.runtime.CoreException;
 
 public class Codejavadoc implements IProjectNature {
 
-	public static final String NATURE_ID = "codejavadoc-eclipse.Codejavadoc";
+	public static final String NATURE_ID = "com.github.podal.codejavadoc.CodejavadocNature";
 
 	private IProject project;
 

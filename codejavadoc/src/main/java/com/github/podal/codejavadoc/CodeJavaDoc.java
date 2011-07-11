@@ -1,9 +1,9 @@
-package com.codejavadoc;
+package com.github.podal.codejavadoc;
 
-import static com.codejavadoc.CodeConstants.END_STRING;
-import static com.codejavadoc.CodeConstants.START_STRING;
-import static com.codejavadoc.util.FileUtil.file;
-import static com.codejavadoc.util.StringUtil.cutLast;
+import static com.github.podal.codejavadoc.CodeConstants.END_STRING;
+import static com.github.podal.codejavadoc.CodeConstants.START_STRING;
+import static com.github.podal.codejavadoc.util.FileUtil.file;
+import static com.github.podal.codejavadoc.util.StringUtil.cutLast;
 
 import java.io.File;
 import java.io.FileFilter;
@@ -20,9 +20,9 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.codejavadoc.util.FileUtil.Encoding;
-import com.codejavadoc.util.FileUtil.LineCallback;
-import com.codejavadoc.util.MapUtil;
+import com.github.podal.codejavadoc.util.FileUtil.Encoding;
+import com.github.podal.codejavadoc.util.FileUtil.LineCallback;
+import com.github.podal.codejavadoc.util.MapUtil;
 
 public class CodeJavaDoc {
 

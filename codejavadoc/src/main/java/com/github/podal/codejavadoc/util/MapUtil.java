@@ -1,4 +1,4 @@
-package com.codejavadoc.util;
+package com.github.podal.codejavadoc.util;
 
 import java.util.Map;
 import java.util.Map.Entry;
