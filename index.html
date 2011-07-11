@@ -1,1 +1,84 @@
-<h1>CodeJavaDoc</h1>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="../default.css" />
+</head>
+<body>
+	<div>
+		<h1>
+			Code<sup>to</sup>JavaDoc
+		</h1>
+		<div>CodeJavaDoc is a tool to connect java code to JavaDoc
+			parts, code is copied in to JavaDoc. There are a support for
+			command-line, maven and eclipse.</div>
+		<div>Java file is only updated if code are change, update is
+			control by a MD5 checksum.</div>
+
+		<div>
+			<h2>Code JavaDoc part</h2>
+			Formate:
+			<pre>
+/**
+ * &lt;!-- code start[&ltmethod to include&gt] [&ltMD5 checksum&gt]--&gt;
+ * &lt;!-- code end --&gt;
+ */
+	</pre>
+			Note: MD5 checksum can be omitted. Just add the <b>code start</b> and
+			<b>code end</b> and the code in the method is copied between tags.
+			Example:
+			<pre>
+/**
+ * &lt;!-- code start[codejavadoc.ExampleClass.exampleMethod] --&gt;
+ * &lt;!-- code end --&gt;
+ */
+ 
+ package codejavadoc;
+ ...
+ class ExampleClass {
+ 	public void exampleMethod() {
+ 		System.out.println("Run example.");
+ 	}
+ }
+	</pre>
+			<div>Transformed to:</div>
+			<pre> 
+/**
+ * &lt;!-- code start[codejavadoc.ExampleClass.exampleMethod] [ADF56579088773675DEFCC]--&gt;
+ 		System.out.println("Run example.");
+ * &lt;!-- code end --&gt;
+ */
+	</pre>
+			<div>You can update the JavaDoc to add * or other decorations.
+				This is due to that formation of JavaDoc won't get overwritten if
+				method isn't change.</div>
+			<div>
+				<b>However keep in mind that it's going to be overwritten every
+					time method is change or MD5 checksum is changed.</b>
+			</div>
+		</div>
+		<div>
+			<h2>Command line</h2>
+			Usage:
+			<pre>
+Usage: CodeJavaDoc [-e &lt;encoding&gt;] src_dir
+note: if encoding is omitted UTF-8 is used by default		
+		    </pre>
+			<div>Example</div>
+			<pre>
+java -cp codejavadoc.jar CodeJavaDoc -e utf-8 /home/username/src/codejavadoc
+			</pre>
+		</div>
+		<div>
+			<h2>Maven</h2>
+			<div>
+				<b>groupId:</b> com.github.podal.codejavadoc<br /> <b>artifactId:</b>
+				codejavadocbase<br /> <b>version:</b> 1.0.0<br />
+				<br />
+			</div>
+			<div>Example:</div>
+			<pre>
+mvn codejavadoc:codejavadoc
+		</pre>
+		</div>
+	</div>
+</body>
+</html>
