@@ -7,11 +7,11 @@
 		<h1>
 			Code<sup>to</sup>JavaDoc
 		</h1>
-		<div>CodeJavaDoc is a tool to connect java code to JavaDoc
-			parts, code is copied in to JavaDoc. There are a support for
+		<div>CodeJavaDoc is a tool to connect Java code to JavaDoc
+			parts. Code is copied into JavaDoc. There is support for
 			command-line, maven and eclipse.</div>
-		<div>Java file is only updated if code are change, update is
-			control by a MD5 checksum.</div>
+		<div>Java file is only updated if the code part is changed,
+			update is controlled by a MD5 checksum.</div>
 
 		<div>
 			<h2>Code JavaDoc part</h2>
@@ -22,24 +22,33 @@
  * &lt;!-- code end --&gt;
  */
 	</pre>
-			Note: MD5 checksum can be omitted. Just add the <b>code start</b> and
-			<b>code end</b> and the code in the method is copied between tags.
-			Example:
+			<div>
+				Just add the <b>code start</b> and <b>code end</b> tags and then the
+				code in the method will be copied between tags.
+			</div>
+			<div>Note: MD5 checksum can be omitted.</div>
+			<div>Example:</div>
+			<div>You have the method...</div>
 			<pre>
-/**
- * &lt;!-- code start[codejavadoc.ExampleClass.exampleMethod] --&gt;
- * &lt;!-- code end --&gt;
- */
- 
- package codejavadoc;
+package codejavadoc;
  ...
  class ExampleClass {
  	public void exampleMethod() {
  		System.out.println("Run example.");
  	}
  }
-	</pre>
-			<div>Transformed to:</div>
+ </pre>
+			<div>..that you want to copy into your JavaDoc, add:</div>
+			<pre>
+...
+/**
+ * &lt;!-- code start[codejavadoc.ExampleClass.exampleMethod] --&gt;
+ * &lt;!-- code end --&gt;
+ */
+ public void someMethod() {
+ ...
+ 	</pre>
+			<div>..you get:</div>
 			<pre> 
 /**
  * &lt;!-- code start[codejavadoc.ExampleClass.exampleMethod] [ADF56579088773675DEFCC]--&gt;
@@ -47,12 +56,12 @@
  * &lt;!-- code end --&gt;
  */
 	</pre>
-			<div>You can update the JavaDoc to add * or other decorations.
-				This is due to that formation of JavaDoc won't get overwritten if
-				method isn't change.</div>
+			<div>You can update the JavaDoc by adding * or other
+				decorations. This is because the formation of JavaDoc won't get
+				overwritten if method isn't changed.</div>
 			<div>
 				<b>However keep in mind that it's going to be overwritten every
-					time method is change or MD5 checksum is changed.</b>
+					time methods are changed or MD5 checksums are changed.</b>
 			</div>
 		</div>
 		<div>
@@ -71,13 +80,23 @@ java -cp codejavadoc.jar CodeJavaDoc -e utf-8 /home/username/src/codejavadoc
 			<h2>Maven</h2>
 			<div>
 				<b>groupId:</b> com.github.podal.codejavadoc<br /> <b>artifactId:</b>
-				codejavadocbase<br /> <b>version:</b> 1.0.0<br />
-				<br />
+				codejavadoc<br /> <b>version:</b> 1.0.0<br /> <br />
 			</div>
 			<div>Example:</div>
 			<pre>
 mvn codejavadoc:codejavadoc
 		</pre>
+			<h2>Eclipse</h2>
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<th>CodeJavaDoc version</th>
+					<th>Eclipse version</th>
+				</tr>
+				<tr>
+					<td>codejavadoc-1.0.0-SNAPSHOT</td>
+					<td><a href="plugins/com.github.podal.codejavadoc_0.9.999.201107121149.jar">com.github.podal.codejavadoc_0.9.999.jar</a></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 </body>
