@@ -138,7 +138,7 @@ public class CodejavadocBuilder extends IncrementalProjectBuilder {
 					if (files != null) {
 						for (File file : files) {
 							for (List<JavaDocSection> list : info.getCallback().getJavaDocMap().values()) {
-								if (list.get(0).getFile().equals(file)) {
+								if (!list.isEmpty() && list.get(0).getFile().equals(file)) {
 									CodeJavaDoc.doFile(encoding, tmpDir, null, handleFile, info.getCallback()
 											.getIncludedMethodsCodeInfo(encoding), list);
 								}
@@ -158,7 +158,6 @@ public class CodejavadocBuilder extends IncrementalProjectBuilder {
 			throw new RuntimeException(e);
 		}
 	}
-
 
 }
 

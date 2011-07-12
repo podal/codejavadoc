@@ -60,4 +60,8 @@ public class JavaDocSection {
 	public String getIncludeClassName() {
 		return includeClassName;
 	}
+
+	public String getClassName() {
+		return className;
+	}
 }

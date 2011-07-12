@@ -28,7 +28,7 @@ public class ClassInfoFetcher implements LineCallback {
 	private Map<String, Integer> voidMethodMap = new HashMap<String, Integer>();
 	private Map<String, Set<File>> includedMethods = new HashMap<String, Set<File>>();
 
-	private int blockId = 0;
+	private Map<String, Integer> blockId = new HashMap<String, Integer>();
 	private JavaDocSection section;
 
 	@Override
@@ -63,10 +63,14 @@ public class ClassInfoFetcher implements LineCallback {
 		if (sections == null) {
 			javaDocMap.put(className, sections = new ArrayList<JavaDocSection>());
 		}
-		if (blockId == sections.size()) {
+		if (!blockId.containsKey(className)) {
+			blockId.put(className, 0);
+		}
+
+		if (blockId.get(className) == sections.size()) {
 			sections.add(section = new JavaDocSection(file, className, name));
 		} else {
-			section = sections.get(blockId);
+			section = sections.get(blockId.get(className));
 		}
 		section.setStart(lineCount);
 		section.setMD5(getMD5(line));
@@ -75,7 +79,7 @@ public class ClassInfoFetcher implements LineCallback {
 	private void matchEndJavaDocString(int lineCount) {
 		if (section != null) {
 			section.setEnd(lineCount);
-			blockId++;
+			blockId.put(section.getClassName(), blockId.get(section.getClassName()) + 1);
 		}
 	}
 
