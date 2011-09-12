@@ -36,16 +36,16 @@ You have the method...
 ...
 
 	/**
-	 * &lt;!-- code start[codejavadoc.ExampleClass.exampleMethod] --&gt;
-	 * &lt;!-- code end --&gt;
+	 * <!-- code start[codejavadoc.ExampleClass.exampleMethod] -->
+	 * <!-- code end -->
 	 */
 	 public void someMethod() {
 	 ...
 	..you get:
 	/**
-	 * &lt;!-- code start[codejavadoc.ExampleClass.exampleMethod] [ADF56579088773675DEFCC]--&gt;
+	 * <!-- code start[codejavadoc.ExampleClass.exampleMethod] [ADF56579088773675DEFCC]-->
 	  System.out.println("Run example.");
-	 * &lt;!-- code end --&gt;
+	 * <!-- code end -->
 	 */
 
 You can update the JavaDoc by adding * or other decorations. This is because the formation of JavaDoc won't get overwritten if method isn't changed.
