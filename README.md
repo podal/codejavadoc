@@ -40,8 +40,10 @@ You have the method...
 	 * <!-- code end -->
 	 */
 	 public void someMethod() {
-	 ...
-	..you get:
+	...
+
+you get:
+	
 	/**
 	 * <!-- code start[codejavadoc.ExampleClass.exampleMethod] [ADF56579088773675DEFCC]-->
 	  System.out.println("Run example.");
