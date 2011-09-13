@@ -81,7 +81,7 @@ Example:
 	mvn codejavadoc:codejavadoc
 #Eclipse
 
-<a href="eclipse">codejavadoc eclipse</a>
+<a href="http://podal.github.com/codejavadoc/eclipse/">codejavadoc eclipse</a>
 Versions:
 
 CodeJavaDoc version [Eclipse version]
