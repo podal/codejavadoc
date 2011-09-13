@@ -70,11 +70,11 @@ Example
 #Maven
 
 
-*groupId:* com.github.podal.codejavadoc
+**groupId:** com.github.podal.codejavadoc
 
-*artifactId:* codejavadoc
+**artifactId:** codejavadoc
 
-*version:* 1.0.0
+**version:** 1.0.0
 
 Example:
 --------
