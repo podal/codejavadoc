@@ -70,9 +70,9 @@ Example
 #Maven
 
 
-| groupId: | com.github.podal.codejavadoc
-| artifactId: | codejavadoc
-| version: | 1.0.0
+*groupId:* com.github.podal.codejavadoc
+*artifactId:* codejavadoc
+*version:* 1.0.0
 
 Example:
 --------
@@ -82,5 +82,6 @@ Example:
 <a href="eclipse">codejavadoc eclipse</a>
 Versions:
 
-| CodeJavaDoc version | Eclipse version
-| codejavadoc-1.0.0-SNAPSHOT | com.github.podal.codejavadoc_1.0.10000.jar</td>
+CodeJavaDoc version [Eclipse version]
+codejavadoc-1.0.0-SNAPSHOT [com.github.podal.codejavadoc_1.0.10000.jar]
+
