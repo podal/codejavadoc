@@ -71,7 +71,9 @@ Example
 
 
 *groupId:* com.github.podal.codejavadoc
+
 *artifactId:* codejavadoc
+
 *version:* 1.0.0
 
 Example:
@@ -83,5 +85,6 @@ Example:
 Versions:
 
 CodeJavaDoc version [Eclipse version]
+
 codejavadoc-1.0.0-SNAPSHOT [com.github.podal.codejavadoc_1.0.10000.jar]
 
