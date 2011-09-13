@@ -58,7 +58,7 @@ Command line
 Usage:
 --------
 
-	Usage: CodeJavaDoc [-e &lt;encoding&gt;] src_dir
+	Usage: CodeJavaDoc [-e <encoding>] src_dir
 	
 note: if encoding is omitted UTF-8 is used by default
 
