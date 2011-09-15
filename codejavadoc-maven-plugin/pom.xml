@@ -8,7 +8,19 @@
 	</parent>
 	<artifactId>codejavadoc-maven-plugin</artifactId>
 	<packaging>maven-plugin</packaging>
+	
 	<name>Copy Code to JavaDoc Maven plugin</name>
+	<description>Tool for copying java code to javadoc maven plugin</description>
+	<url>https://github.com/podal/codejavadoc</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/podal/codejavadoc/blob/master/LICENSE.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 	<dependencies>
 		<dependency>
 			<groupId>com.github.podal.codejavadoc</groupId>

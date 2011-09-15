@@ -8,6 +8,17 @@
 	</parent>
 	<artifactId>codejavadoc</artifactId>
 	<packaging>jar</packaging>
+
 	<name>Copy Code to JavaDoc</name>
-	<dependencies />
+	<description>Tool for copying java code to javadoc</description>
+	<url>https://github.com/podal/codejavadoc</url>
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>https://github.com/podal/codejavadoc/blob/master/LICENSE.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
 </project>
