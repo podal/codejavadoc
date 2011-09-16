@@ -73,10 +73,10 @@ note: if encoding is omitted UTF-8 is used by default
 
 ###Example:
 	mvn codejavadoc:codejavadoc
-##
+##Eclipse
 
 <a href="http://podal.github.com/codejavadoc/eclipse/">codejavadoc eclipse</a>
-Versions:
+#Versions:
 
 CodeJavaDoc version [Eclipse version]
 
