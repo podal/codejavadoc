@@ -7,8 +7,7 @@ Java file is only updated if the code part is changed, update is controlled by a
 It's only void methods that can be used.
 
 #Code JavaDoc part
-Formate:
-========
+##Formate:
  	/**
 	 * <!-- code start[<method to include>] [<MD5 checksum>]-->;
 	 * <!-- code end -->;
@@ -20,8 +19,7 @@ code in the method will be copied between tags.
 
 Note: MD5 checksum can be omitted.
 
-Example:
---------
+##Example:
 You have the method...
 
 	package codejavadoc;
@@ -53,17 +51,14 @@ you get:
 You can update the JavaDoc by adding * or other decorations. This is because the formation of JavaDoc won't get overwritten if method isn't changed.
 
 However keep in mind that it's going to be overwritten every time methods are changed or MD5 checksums are changed.
-Command line
-============
-Usage:
---------
+#Command line
+##Usage:
 
 	Usage: CodeJavaDoc [-e <encoding>] src_dir
 	
 note: if encoding is omitted UTF-8 is used by default
 
-Example
--------
+##Example
 
 	java -cp codejavadoc.jar CodeJavaDoc -e utf-8 /home/username/src/codejavadoc
 	
@@ -76,8 +71,7 @@ Example
 
 **version:** 1.0.0
 
-Example:
---------
+##Example:
 	mvn codejavadoc:codejavadoc
 #Eclipse
 
