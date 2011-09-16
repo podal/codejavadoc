@@ -4,9 +4,10 @@ import static com.github.podal.codejavadoc.eclipse.JavaProjectHelper.isOnClassPa
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -22,25 +23,23 @@ import org.eclipse.core.resources.IncrementalProjectBuilder;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 
-import com.github.podal.codejavadoc.ClassInfoFetcher;
 import com.github.podal.codejavadoc.CodeJavaDoc;
 import com.github.podal.codejavadoc.CodeJavaDoc.HandleFile;
 import com.github.podal.codejavadoc.JavaDocSection;
 import com.github.podal.codejavadoc.util.FileUtil;
 import com.github.podal.codejavadoc.util.FileUtil.Encoding;
-import com.github.podal.codejavadoc.util.FileUtil.LineCallback;
 
 public class CodejavadocBuilder extends IncrementalProjectBuilder {
 	public static final String BUILDER_ID = "com.github.podal.codejavadoc.CodejavadocBuilder";
 
 	class ResourceVisitor implements IResourceDeltaVisitor, IResourceVisitor {
-		private LineCallback callback;
+		private ResetLineCallback callback;
 
 		public ResourceVisitor(CodeJavaDocInfo info) {
 			this(info.getCallback());
 		}
 
-		public ResourceVisitor(LineCallback callback) {
+		public ResourceVisitor(ResetLineCallback callback) {
 			this.callback = callback;
 		}
 
@@ -72,7 +71,7 @@ public class CodejavadocBuilder extends IncrementalProjectBuilder {
 					File file = new File(resource.getRawLocation().toOSString());
 					IFile file2 = (IFile) resource;
 					fileMap.put(file, file2);
-					FileUtil.file(file, encoding, callback);
+					doFile(file, callback);
 				}
 			} catch (IOException e) {
 				throw new RuntimeException(e);
@@ -80,7 +79,6 @@ public class CodejavadocBuilder extends IncrementalProjectBuilder {
 		}
 
 		private void handleDelete(IResource resource) {
-			// TODO fix delete
 			handle(resource);
 		}
 	}
@@ -98,15 +96,23 @@ public class CodejavadocBuilder extends IncrementalProjectBuilder {
 		}
 	};
 
-	private HandleFile handleFile = new HandleFile() {
+	class CallbackHandleFile implements HandleFile {
+
+		private ClassInfoFetcherWithReset callback;
+
+		CallbackHandleFile(ClassInfoFetcherWithReset callback) {
+			this.callback = callback;
+		}
+
 		@Override
 		public void handleFile(File tmpDir, File file, File createdFile) {
 			try {
 				IFile resource = fileMap.get(file);
+				doFile(file, callback);
 				resource.setContents(new FileInputStream(createdFile), IFile.KEEP_HISTORY, null);
 			} catch (CoreException e) {
 				throw new RuntimeException(e);
-			} catch (FileNotFoundException e) {
+			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
 		}
@@ -128,29 +134,32 @@ public class CodejavadocBuilder extends IncrementalProjectBuilder {
 				cache.put(projectName, info);
 				final ResourceVisitor visitor = new ResourceVisitor(info);
 				getProject().accept(visitor);
-				CodeJavaDoc.updateJavaFiles(encoding, tmpDir, null, info.getCallback(), handleFile);
+				CodeJavaDoc.updateJavaFiles(encoding, tmpDir, null, info.getCallback(),
+						new CallbackHandleFile(info.getCallback()));
 			} else {
 				CodeJavaDocInfo info = cache.get(projectName);
-				ClassInfoFetcher fetcher = new ClassInfoFetcher();
+				ClassInfoFetcherWithReset fetcher = new ClassInfoFetcherWithReset();
 				delta.accept(new ResourceVisitor(new Dispatcher(fetcher, info.getCallback())));
+				Set<File> files = new HashSet<File>();
 				for (String method : fetcher.getVoidMethodMap().keySet()) {
-					Set<File> files = info.getCallback().getIncludedMethods().get(method);
-					if (files != null) {
-						for (File file : files) {
-							for (List<JavaDocSection> list : info.getCallback().getJavaDocMap().values()) {
-								if (!list.isEmpty() && list.get(0).getFile().equals(file)) {
-									CodeJavaDoc.doFile(encoding, tmpDir, null, handleFile, info.getCallback()
-											.getIncludedMethodsCodeInfo(encoding), list);
-								}
-							}
-						}
-
+					if (info.getCallback().getIncludedMethods().containsKey(method)) {
+						files.addAll(info.getCallback().getIncludedMethods().get(method));
 					}
 				}
-
+				for (File file : files) {
+					doFile(file, info.getCallback());					
+					List<List<JavaDocSection>> list2 = new ArrayList<List<JavaDocSection>>(info.getCallback()
+							.getJavaDocMap().values());
+					for (List<JavaDocSection> list : list2) {
+						if (!list.isEmpty() && list.get(0).getFile().equals(file)) {
+							CodeJavaDoc.doFile(encoding, tmpDir, null, new CallbackHandleFile(info.getCallback()), info
+									.getCallback().getIncludedMethodsCodeInfo(encoding), list);
+						}
+					}
+				}
 				for (Entry<String, List<JavaDocSection>> en : fetcher.getJavaDocMap().entrySet()) {
-					CodeJavaDoc.doFile(encoding, tmpDir, null, handleFile, info.getCallback()
-							.getIncludedMethodsCodeInfo(encoding), en.getValue());
+					CodeJavaDoc.doFile(encoding, tmpDir, null, new CallbackHandleFile(info.getCallback()), info
+							.getCallback().getIncludedMethodsCodeInfo(encoding), en.getValue());
 				}
 			}
 			return null;
@@ -159,20 +168,32 @@ public class CodejavadocBuilder extends IncrementalProjectBuilder {
 		}
 	}
 
+	public void doFile(File file, ResetLineCallback callback) throws IOException {
+		callback.reset(file);
+		FileUtil.file(file, encoding, callback);
+	}
+
 }
 
-class Dispatcher implements LineCallback {
+class Dispatcher implements ResetLineCallback {
 
-	private LineCallback[] callbacks;
+	private ResetLineCallback[] callbacks;
 
-	public Dispatcher(LineCallback... callbacks) {
+	public Dispatcher(ResetLineCallback... callbacks) {
 		this.callbacks = callbacks;
 	}
 
 	@Override
 	public void line(File file, int lineCount, String line) {
-		for (LineCallback callback : callbacks) {
+		for (ResetLineCallback callback : callbacks) {
 			callback.line(file, lineCount, line);
+		}
+	}
+
+	@Override
+	public void reset(File file) {
+		for (ResetLineCallback callback : callbacks) {
+			callback.reset(file);
 		}
 	}
 

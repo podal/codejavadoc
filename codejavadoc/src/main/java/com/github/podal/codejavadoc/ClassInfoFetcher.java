@@ -23,13 +23,13 @@ import com.github.podal.codejavadoc.util.FileUtil.LineCallback;
 
 public class ClassInfoFetcher implements LineCallback {
 
-	private Map<String, File> classNames = new HashMap<String, File>();
-	private Map<String, List<JavaDocSection>> javaDocMap = new HashMap<String, List<JavaDocSection>>();
-	private Map<String, Integer> voidMethodMap = new HashMap<String, Integer>();
-	private Map<String, Set<File>> includedMethods = new HashMap<String, Set<File>>();
+	protected Map<String, File> classNames = new HashMap<String, File>();
+	protected Map<String, List<JavaDocSection>> javaDocMap = new HashMap<String, List<JavaDocSection>>();
+	protected Map<String, Integer> voidMethodMap = new HashMap<String, Integer>();
+	protected Map<String, Set<File>> includedMethods = new HashMap<String, Set<File>>();
 
-	private Map<String, Integer> blockId = new HashMap<String, Integer>();
-	private JavaDocSection section;
+	protected Map<String, Integer> blockId = new HashMap<String, Integer>();
+	protected JavaDocSection section;
 
 	@Override
 	public void line(File file, int lineCount, String line) {

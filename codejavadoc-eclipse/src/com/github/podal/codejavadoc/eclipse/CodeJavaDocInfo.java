@@ -1,12 +1,10 @@
 package com.github.podal.codejavadoc.eclipse;
 
-import com.github.podal.codejavadoc.ClassInfoFetcher;
-
 public class CodeJavaDocInfo {
 
-	private ClassInfoFetcher callback = new ClassInfoFetcher();
+	private ClassInfoFetcherWithReset callback = new ClassInfoFetcherWithReset();
 
-	public ClassInfoFetcher getCallback() {
+	public ClassInfoFetcherWithReset getCallback() {
 		return callback;
 	}
 
