@@ -76,7 +76,7 @@ note: if encoding is omitted UTF-8 is used by default
 ##Eclipse
 
 <a href="http://podal.github.com/codejavadoc/eclipse/">codejavadoc eclipse</a>
-#Versions:
+###Versions:
 
 CodeJavaDoc version [Eclipse version]
 
