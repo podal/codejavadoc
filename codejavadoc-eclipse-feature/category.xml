@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.github.podal.codejavadoc_1.0.0.qualifier.jar" id="com.github.podal.codejavadoc" version="1.0.0.qualifier">
+      <category name="JavaDocTools"/>
+   </feature>
+   <category-def name="JavaDocTools" label="JavaDoc Tools"/>
+</site>
