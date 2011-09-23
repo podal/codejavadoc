@@ -90,8 +90,8 @@ public class CodeJavaDoc {
 		System.out.println("note: if encoding is omitted UTF-8 is used by default");
 	}
 
-	public static void doCodeToJavaDoc(File[] files, Encoding encoding, final File tmpDir, Log log)
-			throws IOException, FileNotFoundException {
+	public static void doCodeToJavaDoc(File[] files, Encoding encoding, final File tmpDir, Log log) throws IOException,
+			FileNotFoundException {
 		ClassInfoFetcher fetcher = new ClassInfoFetcher();
 		for (File file : files) {
 			file(file, encoding, fetcher, JAVAFILE_FILTER);
@@ -139,7 +139,9 @@ public class CodeJavaDoc {
 					out.println(line);
 				} else if (!set.contains(jdSection)) {
 					CodeSection cSection = includeMethods.get(jdSection.getIncludeClassName());
-					if (!cSection.getMd5().equals(jdSection.getMd5())) {
+					if (cSection == null) { // Can't find method keep lines. 
+						out.println(line);
+					} else if (!cSection.getMd5().equals(jdSection.getMd5())) {
 						result.put(jdSection.getIncludeClassName(), "Update");
 						out.printf(START_STRING, jdSection.getIncludeClassName(), cSection.getMd5());
 						for (String row : cSection.getRows()) {
