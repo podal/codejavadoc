@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.github.podal.codejavadoc</groupId>
 		<artifactId>codejavadocbase</artifactId>
-		<version>1.0.0</version>
+		<version>1.0.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>codejavadoc</artifactId>
 	<packaging>jar</packaging>
